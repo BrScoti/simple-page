@@ -1,0 +1,59 @@
+<head>
+  <title>simple-page</title>
+</head>
+
+<body>
+  {{>main}}
+</body>
+<template name="main">
+  <button class="btn btn-primary float-right " id="add"> Adicionar usuário</button>
+  {{#with tela 'list'}}
+  {{>list}}
+  {{/with}}
+  {{#with tela 'add'}}
+  {{>add}}
+
+  {{/with}}
+</template>
+
+<template name="add">
+  <form action="" class="container" method="post">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Nome</label>
+      <input type="text" class="form-control" id="inputName" aria-describedby="emailHelp" placeholder="Digite o nome">
+
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Endereço</label>
+      <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Digite o email">
+
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Quantidade de Produtos</label>
+      <input type="number" class="form-control" id="inputQuant" aria-describedby="emailHelp" placeholder="Digite a quantidade">
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" id="close" class="btn btn-secondary">Close</button>
+      <button type="button" id="save" class="btn btn-primary">Save changes</button>
+    </div>
+  </form>
+
+</template>
+
+<template name="list">
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col">Id</th>
+          <th class="col">Nome</th>
+          <th class="col">Endereço</th>
+          <th class="col">Quantidade de Produtos</th>
+          <th class="col">Logo do Fornecedor</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+</template>
