@@ -1,0 +1,42 @@
+<template name="addLayout">
+  <form action="" class="container" method="post">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Nome</label>
+      <input type="text" class="form-control" id="inputName" aria-describedby="emailHelp" placeholder="Digite o nome">
+
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email</label>
+      <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Digite o email">
+
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Quantidade de Produtos</label>
+      <input type="number" class="form-control" id="inputQuant" aria-describedby="emailHelp" placeholder="Digite a quantidade">
+
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Data</label>
+      <input type="date" class="form-control" value="{{quant}}" id="inputDate" aria-describedby="emailHelp"
+        >
+
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Valor</label>
+      <input type="number" class="form-control" value="{{quant}}" id="inputValor" aria-describedby="emailHelp"
+        placeholder="Digite o valor">
+
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Telefone</label>
+      <input type="phone" class="form-control" value="{{quant}}" id="inputPhone" aria-describedby="emailHelp"
+        placeholder="Digite o telefone">
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" id="close" class="btn btn-secondary">Close</button>
+      <button type="button" id="save" class="btn btn-primary">Save</button>
+    </div>
+  </form>
+
+</template>

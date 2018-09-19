@@ -15,12 +15,5 @@
     "meteor-node-stubs": "^0.4.1",
     "popper": "^1.0.1",
     "popper.js": "^1.14.4"
-  },
-  "meteor": {
-    "mainModule": {
-      "client": "client/main.js",
-      "server": "server/main.js"
-    },
-    "testModule": "tests/main.js"
   }
 }

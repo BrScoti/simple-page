@@ -1,0 +1,28 @@
+<template name="listLayout">
+        <div class="container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="col">Id</th>
+                <th class="col">Nome</th>
+                <th class="col">Endereço</th>
+                <th class="col">Quantidade de Produtos</th>
+              </tr>
+              
+            </thead>
+            <tbody>
+                {{#each fornecedores }}
+              <tr>
+                <td>{{_id}}</td>
+                <td>{{name}}</td>
+                <td>{{email}}</td>
+                <td>{{quant}}</td>
+                <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" id="edit">Edit</button></td>
+                <td><button type="button" class="btn btn-dark" id="delete">Delete</button> </td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      
+      </template>
