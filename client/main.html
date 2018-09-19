@@ -14,6 +14,7 @@
   {{>add}}
 
   {{/with}}
+
 </template>
 
 <template name="add">
@@ -25,7 +26,7 @@
     </div>
     <div class="form-group">
       <label for="exampleInputEmail1">Endereço</label>
-      <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Digite o email">
+      <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Digite o email">
 
     </div>
     <div class="form-group">
@@ -50,10 +51,65 @@
           <th class="col">Nome</th>
           <th class="col">Endereço</th>
           <th class="col">Quantidade de Produtos</th>
-          <th class="col">Logo do Fornecedor</th>
         </tr>
+        {{#each fornecedores }}
+        <tr>
+          <td>{{_id}}</td>
+          <td>{{name}}</td>
+          <td>{{email}}</td>
+          <td>{{quant}}</td>
+          <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" id="edit">Edit</button></td>
+          <td><button type="button" class="btn btn-dark" id="delete">Delete</button> </td>
+        </tr>
+        {{/each}}
       </thead>
     </table>
   </div>
 
+</template>
+
+
+<template name="edit">
+  <!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Editar</h5>
+            <button type="button" class="close" id="closeX" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <form action="" class="container" method="post">
+                {{#with fornecedor}}
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nome</label>
+                    <input type="text" class="form-control" value="{{name}}" id="inputNameEdit" aria-describedby="emailHelp" placeholder="Digite o nome">
+              
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Endereço</label>
+                    <input type="email" class="form-control" value="{{email}}" id="inputEmailEdit" aria-describedby="emailHelp" placeholder="Digite o email">
+              
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Quantidade de Produtos</label>
+                    <input type="number" class="form-control"  value="{{quant}}" id="inputQuantEdit" aria-describedby="emailHelp" placeholder="Digite a quantidade">
+              
+                  </div>
+                  {{/with}}
+                </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button"  class="btn btn-secondary" id="close" data-dismiss="modal">Close</button>
+            <button type="button" id="save" class="btn btn-primary" >Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
 </template>
