@@ -6,6 +6,8 @@ Template.listLayout.onCreated(function addOnCreated() {
 });
 Template.listLayout.helpers({
   fornecedores() {
+    //console.log(Fornecedores.find({}, {sort: {quant: 1}}).fetch());
+
     return Fornecedores.find().fetch();
   }
 })

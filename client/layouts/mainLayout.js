@@ -1,10 +1,19 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
+
+
+
 Template.mainLayout.events({
-  'click #add'(event, instance) {
-    FlowRouter.go('/add');
+  'click #addFornecedor'(event, instance) {
+
+    FlowRouter.go('/addf');
+  },
+  'click #addPedido'(event, instance) {
+
+    FlowRouter.go('/addp');
   }
 
 
 });
+

@@ -1,6 +1,16 @@
 <template name="mainLayout">
-        <button class="btn btn-primary float-right " id="add"> Adicionar usuário</button>
+        <div class="pagination-centered text-center ">
+
+                {{> loginLayout}}
+
+        </div>
+        {{#if currentUser}}
+        <button class="btn btn-primary float-right " id="addFornecedor"> Adicionar fornecedor</button>
+        <button class="btn btn-primary float-right" id="addPedido">Adicionar pedido</button>
         {{>listLayout}}
 
+        {{/if}}
+        
 
 </template>
+

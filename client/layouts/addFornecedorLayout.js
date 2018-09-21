@@ -1,5 +1,10 @@
 import { Fornecedores } from '/lib/colections/main.js'
-Template.addLayout.onCreated(function addOnCreated() {
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+
+
+
+Template.addFornecedorLayout.onCreated(function addOnCreated() {
   this.fornecedor = new ReactiveVar({});
 
 
@@ -7,17 +12,17 @@ Template.addLayout.onCreated(function addOnCreated() {
 
 });
 
-Template.addLayout.onRendered(function addOnRendered() {
+Template.addFornecedorLayout.onRendered(function addOnRendered() {
   $('#inputPhone').inputmask({ "mask": "(99) 99999-9999" });
 });
 
-Template.addLayout.helpers({
+Template.addFornecedorLayout.helpers({
   fornecedor() {
     return Template.instance().status.get();
   }
 });
 
-Template.addLayout.events({
+Template.addFornecedorLayout.events({
   'click #close'() {
     FlowRouter.go('/');
 
@@ -25,18 +30,24 @@ Template.addLayout.events({
   'click #save'(event, instance) {
     let nameInput = document.getElementById('inputName').value;
     let emailInput = document.getElementById('inputEmail').value;
-    let quantInput = document.getElementById('inputQuant').value;
+    let quantInput = parseInt(document.getElementById('inputQuant').value);
+    let valorInput= parseFloat(document.getElementById('inputValor').value);
+    let productNameInput=document.getElementById('inputProductName').value;
     const valida = require('../controller/validations');
     const user={
       nameInput,
+      productNameInput,
       emailInput,
-      quantInput
+      quantInput,
+      valorInput
     }
     if (valida.validations(user)) {
       Fornecedores.insert({
         name: nameInput,
+        product_name:productNameInput,
         email: emailInput,
-        quant: quantInput
+        quant: quantInput,
+        valor: valorInput
       });
       FlowRouter.go('/');
 
@@ -46,7 +57,7 @@ Template.addLayout.events({
     nameInput = '';
     emailInput = '';
     quantInput = '';
-    
+    productNameInput='';
     /*
     Fornecedores.insert({
       name: nameInput,

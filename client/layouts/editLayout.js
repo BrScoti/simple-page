@@ -30,14 +30,17 @@ Template.editLayout.onCreated(function editOnCreated() {
       let nameInput = document.getElementById('inputNameEdit').value;
       let emailInput = document.getElementById('inputEmailEdit').value;
       let quantInput = document.getElementById('inputQuantEdit').value;
-     
+      let productNameInput= document.getElementById('inputProductNameEdit').value;
+      let valorInput= document.getElementById('inputValueEdit').value;
       Fornecedores.update({
         _id: instance.fornecedor.get()._id
       }, {
           $set: {
             name: nameInput,
+            product_name:productNameInput,
             email: emailInput,
-            quant: quantInput
+            quant: quantInput,
+            valor:valorInput
   
           }
         })

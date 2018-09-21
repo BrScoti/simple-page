@@ -1,0 +1,99 @@
+<template name="addPedidoLayout">
+  <div class="row">
+    <div class="col-sm-8 ">
+      <div class="container">
+        <form action="" class="" method="post">
+          <div class="form-group">
+            <label for="exampleInputNome">Nome</label>
+            <input type="text" class="form-control " id="inputName" aria-describedby="emailHelp" placeholder="Digite o nome">
+
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail">Email</label>
+            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Digite o email">
+
+          </div>
+          <label for="exampleInputFornecedores">Fornecedores:</label>
+
+          {{#each fornecedores }}
+          <div class="form-check form-check-inline">
+            <input class="form-check-input product" type="checkbox" id="inlineCheckbox1" value="{{product_name}}">
+            <label class="form-check-label" for="inlineCheckbox1">{{name}}-{{product_name}}</label>
+          </div>
+          {{/each}}
+
+
+
+          <div class="modal-footer">
+            <button type="button" id="close" class="btn btn-secondary">Close</button>
+            <button type="button" id="save" class="btn btn-primary">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="alert alert-primary" role="alert">
+        <div class="row">
+          <div class="col">
+            <strong>Nome do produto</strong>
+          </div>
+          <div class="col">
+            <strong>Valor</strong>
+          </div>
+          <div class="col">
+            <strong>Quantidade</strong>
+          </div>
+        </div>
+
+        {{#each fornecedor}}
+        <div class="row">
+          <div class="col">
+            {{product_name}}
+          </div>
+          <div class="col">
+            {{valor}}
+          </div>
+          <div class="col">
+            <div class="form-group">
+
+              <input type="number" class="form-control quantidade" id="" aria-describedby="emailHelp" min="1"
+                placeholder="Digite a quantidade">
+            </div>
+          </div>
+        </div>
+        {{/each}}
+        {{#unless fornecedor}}
+        Nenhum fornecedor selecionado
+        {{/unless}}
+      </div>
+      <div class="alert alert-success">
+        <div class="row">
+          <div class="col">
+            <strong>Valor total</strong>
+          </div>
+          <div class="col">
+            {{valorTotal}}
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-success">
+        {{#each produtosFornecedor}}
+
+        <div class="row">
+          <div class="col">
+              {{this}}
+          </div>
+          <div class="col">
+            
+          </div>
+          
+        </div>
+        {{/each}}
+          {{#unless fornecedor}}
+          Nenhum fornecedor selecionado
+          {{/unless}}
+      </div>
+    </div>
+
+  </div>
+</template>

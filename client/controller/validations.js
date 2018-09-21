@@ -23,7 +23,9 @@ const validaCampos = (user) => {
     const name = user.nameInput.value;
     const email = user.emailInput.value;
     const quant = user.quantInput.value;
+    const valor = user.valorInput.value;
+    const product_name = user.productNameInput.value;
 
-    return (name !== '' && email !== '' && quant !== '');
+    return (name !== '' && email !== '' && quant !== '' && valor !== '' && product_name !== '');
 
 }
