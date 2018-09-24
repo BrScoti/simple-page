@@ -54,10 +54,7 @@ Template.addFornecedorLayout.events({
     }else{
       alert('Aconteceu algum erro, revise seus dados');
     }
-    nameInput = '';
-    emailInput = '';
-    quantInput = '';
-    productNameInput='';
+   
     /*
     Fornecedores.insert({
       name: nameInput,

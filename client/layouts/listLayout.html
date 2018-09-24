@@ -1,61 +1,82 @@
 <template name="listLayout">
-        <div class="container">
-          <table class="table">
-            <thead>
-              <tr>
-                <th class="col">Id</th>
-                <th class="col">Nome</th>
-                <th class="col">Nome do produto</th>
-                <th class="col">Endereço</th>
-                <th class="col">Quantidade de Produtos</th>
-                <th class="col">Valor</th>
-              </tr>
-              
-            </thead>
-            <tbody>
-                {{#each fornecedores }}
-              <tr>
-                <td>{{_id}}</td>
-                <td>{{name}}</td>
-                <td>{{product_name}}</td>
-                <td>{{email}}</td>
-                <td>{{quant}}</td>
-                <td>{{valor}}</td>
-                <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" id="edit">Edit</button></td>
-                <td><button type="button" class="btn btn-dark" id="delete">Delete</button> </td>
-              </tr>
-              {{/each}}
-            </tbody>
-          </table>
-        </div>
-        <br>
-        <div class="container">
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th class="col">Id</th>
-                    <th class="col">Nome</th>
-                    <th class="col">Nome do produto</th>
-                    <th class="col">Endereço</th>
-                    <th class="col">Quantidade de Produtos</th>
-                    <th class="col">Valor</th>
-                  </tr>
-                  
-                </thead>
-                <tbody>
-                    {{#each fornecedores }}
-                  <tr>
-                    <td>{{_id}}</td>
-                    <td>{{name}}</td>
-                    <td>{{product_name}}</td>
-                    <td>{{email}}</td>
-                    <td>{{quant}}</td>
-                    <td>{{valor}}</td>
-                    <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" id="edit">Edit</button></td>
-                    <td><button type="button" class="btn btn-dark" id="delete">Delete</button> </td>
-                  </tr>
-                  {{/each}}
-                </tbody>
-              </table>
-          </div>
-      </template>
+  <div class="container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="fornecedores-tab" data-toggle="tab" href="#fornecedores" role="tab"
+          aria-controls="fornecedores" aria-selected="true">Fornecedores</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="pedidos-tab" data-toggle="tab" href="#pedidos" role="tab" aria-controls="pedidos"
+          aria-selected="false">Pedidos</a>
+      </li>
+
+    </ul>
+  </div>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="fornecedores" role="tabpanel" aria-labelledby="fornecedores-tab">
+
+
+      <div class="container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="col">Id</th>
+              <th class="col">Nome</th>
+              <th class="col">Nome do produto</th>
+              <th class="col">Endereço</th>
+              <th class="col">Quantidade de Produtos</th>
+              <th class="col">Valor</th>
+            </tr>
+
+          </thead>
+          <tbody>
+            {{#each fornecedores }}
+            <tr>
+              <td>{{_id}}</td>
+              <td>{{name}}</td>
+              <td>{{product_name}}</td>
+              <td>{{email}}</td>
+              <td>{{quant}}</td>
+              <td>{{valor}}</td>
+              <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" id="edit">Edit</button></td>
+              <td><button type="button" class="btn btn-dark" id="delete">Delete</button> </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <br>
+    </div>
+    <div class="tab-pane fade" id="pedidos" role="tabpanel" aria-labelledby="pedidos-tab">
+
+      <div class="container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="col">Id</th>
+              <th class="col">Nome do comprador</th>
+              <th class="col">Email do comprador</th>
+              <th class="col">Produtos</th>
+              <th class="col">Valor</th>
+            </tr>
+
+          </thead>
+          <tbody>
+            {{#each pedidos }}
+            <tr>
+              <td>{{_id}}</td>
+              <td>{{name}}</td>
+              <td>{{email}}</td>
+              <td>{{#each fornecedores}}{{product_name}} {{/each}}</td>
+              <td>{{valorTotal}}</td>
+              <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" id="edit">Edit</button></td>
+              <td><button type="button" class="btn btn-dark" id="delete">Delete</button> </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</template>

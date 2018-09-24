@@ -1,4 +1,4 @@
-import { Fornecedores } from '/lib/colections/main.js'
+import { Fornecedores,Pedidos } from '/lib/colections/main.js'
 
 
 Template.addPedidoLayout.onCreated(function addOnCreated() {
@@ -44,23 +44,42 @@ Template.addPedidoLayout.events({
         }
     },
     'keyup .quantidade'(event, instance) {
-        const quantidade = event.target.value !== '' ? event.target.value : 1;        
+        const quantidade = event.target.value !== '' ? event.target.value : 1;
         const totalValor = instance.valorTotal.get();
-        const fornecedor = instance.fornecedor.get().find(f=>f._id==this._id);
-        const novaListaFornec = instance.fornecedor.get().filter(f=>f._id!=this._id);
-        console.log(this);
+        const fornecedores= instance.fornecedor.get();
+        const index = instance.fornecedor.get().findIndex(t => t._id == this._id);
+        fornecedores[index].qntdSelecionada=quantidade;
+        instance.fornecedor.set(fornecedores);    
+        const valorFinal = fornecedores.map(doc => doc.qntdSelecionada * doc.valor).reduce((acum, curr) => acum + curr);
+        instance.valorTotal.set(valorFinal);
+        //fornecedor.qntdSelecionada = quantidade;
+        //novaListaFornec.push(fornecedor);
         
-            fornecedor.qntdSelecionada = quantidade;
-            novaListaFornec.push(fornecedor)
-            let valorFinal = 0;
-            
-            valorFinal += fornecedor.valor * fornecedor.qntdSelecionada;
-            
-            
-            instance.valorTotal.set(valorFinal);
-            instance.fornecedor.set(novaListaFornec);
+        //let valorFinal = 0;
+        
+        //valorFinal += fornecedor.valor * fornecedor.qntdSelecionada;
+        
+        //const fornecedor = instance.fornecedor.get().find(f => f._id == this._id);
+        //const novaListaFornec = instance.fornecedor.get().filter(f => f._id != this._id);
+        //console.log(index);
+        //console.log(this);
+        //console.log(fornecedores[index]);
+        
+    },
+    'click #save'(event, instance) {
+        let name=document.getElementById('inputName').value;
+        let email=document.getElementById('inputEmail').value;
+        const fornecedores=Template.instance().fornecedor.get();
+        const valorTotal= Template.instance().valorTotal.get();
+        Pedidos.insert({
+            name,
+            email,
+            fornecedores,
+            valorTotal
+        })
+        FlowRouter.go('/');
 
-
+        
     }
 })
 
@@ -72,14 +91,15 @@ Template.addPedidoLayout.helpers({
         return Template.instance().fornecedor.get();
     },
     valorTotal() {
+
         return Template.instance().valorTotal.get();
     },
-    produtosFornecedor(){
-        const produtos=Template.instance().fornecedor.get().map(doc=>{
+    produtosFornecedor() {
+        const produtos = Template.instance().fornecedor.get().map(doc => {
             const descricao = `${doc.product_name} ${doc.qntdSelecionada * doc.valor}`
             return descricao;
         });
-        console.log(produtos);
+        // console.log(produtos);
         return produtos;
     }
 

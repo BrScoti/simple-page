@@ -1,4 +1,4 @@
-import { Fornecedores } from '/lib/colections/main.js'
+import { Fornecedores,Pedidos } from '/lib/colections/main.js'
 
 
 Template.listLayout.onCreated(function addOnCreated() {
@@ -9,7 +9,11 @@ Template.listLayout.helpers({
     //console.log(Fornecedores.find({}, {sort: {quant: 1}}).fetch());
 
     return Fornecedores.find().fetch();
+  },
+  pedidos(){
+    return Pedidos.find().fetch();
   }
+  
 })
 Template.listLayout.events({
   'click #edit'(event, instance) {
